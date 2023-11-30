@@ -2,13 +2,23 @@ package com.isa.platform.u2021.inventory.domain.model.aggregates;
 
 import com.isa.platform.u2021.inventory.domain.model.valueobjects.EMonitoringLevel;
 import com.isa.platform.u2021.inventory.domain.model.valueobjects.SerialNumber;
-import com.isa.platform.u2021.shared.domain.model.entities.AuditableModel;
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.domain.AbstractAggregateRoot;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.Date;
+
+/**
+ * Represents a product.
+ * The product is an aggregate root
+ */
 @Getter
 @Entity
-public class Product {
+@EntityListeners(AuditingEntityListener.class)
+public class Product extends AbstractAggregateRoot<Product> {
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +30,9 @@ public class Product {
     @Getter
     private String model;
 
+    /**
+     * The serial number for this product
+     */
     @Embedded
     private SerialNumber serialNumber;
 
@@ -28,7 +41,6 @@ public class Product {
 
     // Estos dos no me los pide el enunciado, pero lo más seguro es que vengan para el examen
 
-    /*
     @CreatedDate
     @Column(nullable = false)
     private Date createdAt;
@@ -36,8 +48,6 @@ public class Product {
     @LastModifiedDate
     @Column(nullable = false)
     private Date updatedAt;
-
-     */
 
     public Product() {
 
@@ -57,4 +67,5 @@ public class Product {
     public String getMonitoringLevel() {
         return this.monitoringLevel.name();
     }
+
 }
