@@ -1,6 +1,6 @@
 package com.isa.platform.u2021.inventory.domain.model.aggregates;
 
-import com.isa.platform.u2021.inventory.domain.model.valueobjects.EMonitoringLevel;
+import com.isa.platform.u2021.inventory.domain.model.valueobjects.MonitoringLevel;
 import com.isa.platform.u2021.inventory.domain.model.valueobjects.SerialNumber;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -37,7 +37,7 @@ public class Product extends AbstractAggregateRoot<Product> {
     private SerialNumber serialNumber;
 
     @Enumerated(EnumType.ORDINAL)
-    private EMonitoringLevel monitoringLevel;
+    private MonitoringLevel monitoringLevel;
 
     // Estos dos no me los pide el enunciado, pero lo más seguro es que vengan para el examen
 
@@ -53,7 +53,7 @@ public class Product extends AbstractAggregateRoot<Product> {
 
     }
 
-    public Product(String brand, String model, String serialNumber, EMonitoringLevel monitoringLevel) {
+    public Product(String brand, String model, String serialNumber, MonitoringLevel monitoringLevel) {
         this.brand = brand;
         this.model = model;
         this.serialNumber = new SerialNumber(serialNumber);

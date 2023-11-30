@@ -2,7 +2,7 @@ package com.isa.platform.u2021.inventory.application.internal.commandservices;
 
 import com.isa.platform.u2021.inventory.domain.model.aggregates.Product;
 import com.isa.platform.u2021.inventory.domain.model.commands.CreateProductCommand;
-import com.isa.platform.u2021.inventory.domain.model.valueobjects.EMonitoringLevel;
+import com.isa.platform.u2021.inventory.domain.model.valueobjects.MonitoringLevel;
 import com.isa.platform.u2021.inventory.domain.model.valueobjects.SerialNumber;
 import com.isa.platform.u2021.inventory.domain.services.ProductCommandService;
 import com.isa.platform.u2021.inventory.infrastructure.persistence.jpa.repositories.ProductRepository;
@@ -36,7 +36,7 @@ public class ProductCommandServiceImpl implements ProductCommandService {
              command.brand(),
              command.model(),
              command.serialNumber(),
-                EMonitoringLevel.valueOf(command.monitoringLevel()));
+                MonitoringLevel.valueOf(command.monitoringLevel()));
         productRepository.save(product);
         return product.getId();
     }

@@ -7,13 +7,13 @@ import lombok.Getter;
  */
 
 @Getter
-public enum EMonitoringLevel {
+public enum MonitoringLevel {
     ESSENTIAL_MONITORING(1),
     ADVANCE_MONITORING(2);
 
     private final int value;
 
-    EMonitoringLevel(int value) {
+    MonitoringLevel(int value) {
         this.value = value;
     }
 }
