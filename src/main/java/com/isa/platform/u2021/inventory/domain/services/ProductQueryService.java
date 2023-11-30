@@ -2,6 +2,7 @@ package com.isa.platform.u2021.inventory.domain.services;
 
 import com.isa.platform.u2021.inventory.domain.model.aggregates.Product;
 import com.isa.platform.u2021.inventory.domain.model.queries.GetProductByIdQuery;
+import com.isa.platform.u2021.inventory.domain.model.queries.GetProductBySerialNumberQuery;
 
 import java.util.Optional;
 
@@ -16,4 +17,6 @@ public interface ProductQueryService {
      * @return the {@link Product} entity.
      */
     Optional<Product> handle(GetProductByIdQuery query);
+
+    Optional<Product> handle(GetProductBySerialNumberQuery query);
 }
